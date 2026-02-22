@@ -1,0 +1,16 @@
+{
+  "name": "check-your-privilege",
+  "description": "Build an LDT via heaven (or hell by levi+note portals) to go parallel.. or use nukes",
+  "author": "Anton Bulakh <him@necauq.ua> (https://necauq.ua/)",
+  "version": "1.0.0",
+  "private": true,
+  "noita.workshop.id": "3671154096",
+  "noita.name": "Check Your Privilege",
+  "noita.compat": 12,
+  "noita.workshop.description": "Makes hard materials (e.g. EDR, cursed rock, temple brick) non-destructible by typical means.",
+  "license": "MIT",
+  "dependencies": {
+    "@noita-ts/base": "^0.6.1",
+    "@noita-ts/nxml": "^0.1.1"
+  }
+}
