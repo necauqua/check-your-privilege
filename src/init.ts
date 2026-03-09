@@ -16,12 +16,28 @@ for (const xml of nxml.edit_file("data/materials.xml")) {
     );
 
     material.set("durability", 9001);
+
     const tags = material.get("tags");
-    const prefix = tags ? `${tags},` : "";
-    material.set(
-      "tags",
-      `${prefix}[indestructible],[matter_eater_ignore_list]`,
-    );
+    // tags is set on all/most CellDatas, avoid overriding it in CellDataChilds
+    if (!tags) {
+      continue;
+    }
+
+    const taglist = tags.split(",").filter((tag) => tag !== "[corrodible]"); // no acid
+
+    // no black holes and matter eater
+    taglist.push("[indestructible]");
+    taglist.push("[matter_eater_ignore_list]");
+
+    material.set("tags", taglist.join(","));
+  }
+}
+
+for (const xml of nxml.edit_file(
+  "data/entities/projectiles/deck/worm_shot.xml",
+)) {
+  for (const comp of xml.each_of("CellEaterComponent")) {
+    comp.set("ignored_material_tag", "[indestructible]");
   }
 }
 
